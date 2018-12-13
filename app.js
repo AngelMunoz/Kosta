@@ -2,7 +2,6 @@
 
 const Koa = require('koa');
 const app = new Koa();
-const { connect } = require('./src/services/database')
 const helmet = require("koa-helmet");
 const jwt = require('koa-jwt');
 const bodyParser = require('koa-bodyparser');
@@ -26,8 +25,7 @@ app
     }
   })
 
-async function main() {
-  await connect();
+function main() {
   app.listen(PORT, HOST)
   logger.info(`Server Ready at [${HOST}:${PORT}] - ${new Date().toUTCString()}`);
 }
